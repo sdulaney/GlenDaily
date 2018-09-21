@@ -4,18 +4,14 @@ var router = express.Router();
 var data = {
 	contacts: {
 		list: [
-			{
-				name: "Bryce Casaje",
-				message: "Hello!",
-				email: "bryce@bryce.com",
-				date: "i dont know..."
-			},
 		],
+		date: new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
 	}
 }
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  router.use(express.static('public'));
   res.render('admin_index', { title: 'Express', data: data });
 });
 
@@ -25,6 +21,7 @@ router.get('/contacts', function(req, res, next) {
 });
 
 module.exports = router;
-module.exports.addContact = function(data) {
-	contactList.push(data);
+module.exports.addContact = function(resp) {
+	data.contacts.list.push(resp);
+	data.contacts.date = new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
 }
