@@ -149,25 +149,29 @@
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Message</th>
                       <th>Email</th>
-                      <th>Date</th>
+                      <th>Official</th>
+                      <th>Subject</th>
+                      <th>Message</th>
+                      <th>ID</th>
                     </tr>
                   </thead>
                   {{#each data.contacts.list}}
                   <tbody>
                     <tr>
                       <td>{{this.name}}</td>
-                      <td>{{this.message}}</td>
                       <td>{{this.email}}</td>
-                      <td>{{this.date}}</td>
+                      <td>{{this.official}}</td>
+                      <td>{{this.subject}}</td>
+                      <td>{{this.message}}</td>
+                      <td>{{this.id}}</td>
                     </tr>
                   </tbody>
                   {{/each}}
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Last updated {{data.contacts.date}}</div>
           </div>
 
           <p class="small text-center text-muted my-5">

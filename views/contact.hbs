@@ -1,7 +1,7 @@
 <div>
     <br><br>
     <h2 class="page-header">Contact a City Official</h2>
-    <form method="POST" action="/contact">
+    <form method="POST" action="/api/contact">
         <div class="form-group">
             <label>Your Name</label>
             <input type="text" class="form-control" id="contact_name" name="name" placeholder="Name" />
@@ -13,7 +13,7 @@
         <div class="form-group">
             <label>City Official</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="contact_sinanyan" id="contact_sinanyan" value="option1" checked>
+                <input class="form-check-input" type="radio" name="official" id="contact_sinanyan" value="Mayor Zareh Sinanyan" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     <img src="/images/sinanyan.jpeg" width="50">
                     <br>
@@ -21,7 +21,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="contact_agajanian" id="contact_agajanian" value="option2">
+                <input class="form-check-input" type="radio" name="official" id="contact_agajanian" value="Councilmember Vrej Agajanian">
                 <label class="form-check-label" for="exampleRadios1">
                     <img src="/images/agajanian.jpeg" width="50">
                     <br>
@@ -29,7 +29,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="contact_devine" id="contact_devine" value="option3">
+                <input class="form-check-input" type="radio" name="official" id="contact_devine" value="Councilmember Paula Devine">
                 <label class="form-check-label" for="exampleRadios1">
                     <img src="/images/devine.jpeg" width="50">
                     <br>
@@ -37,7 +37,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="contact_gharpetian" id="contact_gharpetian" value="option4">
+                <input class="form-check-input" type="radio" name="official" id="contact_gharpetian" value="Councilmember Vartan Gharpetian">
                 <label class="form-check-label" for="exampleRadios1">
                     <img src="/images/gharpetian.jpeg" width="50">
                     <br>
@@ -45,7 +45,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="contact_najarian" id="contact_najarian" value="option5">
+                <input class="form-check-input" type="radio" name="official" id="contact_najarian" value="Councilmember Ara Najarian">
                 <label class="form-check-label" for="exampleRadios1">
                     <img src="/images/najarian.jpeg" width="50">
                     <br>
@@ -60,11 +60,11 @@
         </div>
         <div class="form-group">
             <label>Message</label>
-            <input type="text" class="form-control" id="contact_message" name="Message" placeholder="Message" />
+            <input type="text" class="form-control" id="contact_message" name="message" placeholder="Message" />
         </div>
         <div class="form-group">
             <label>Job ID</label>
-            <input type="text" class="form-control" id="addjob_job_id" name="job_id" placeholder="Job ID" />
+            <input type="text" class="form-control" id="addjob_job_id" name="id" placeholder="Job ID" />
         </div>
         
         <button type="submit" class="btn btn-primary">Add Job</button>
