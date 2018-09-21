@@ -22,7 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use('/admin', require('./routes/admin_index'));
+app.use('/contact', require('./routes/contact'));
+
+app.use('/admin', require('./routes/admin'));
 app.use('/login', require('./routes/admin_login'));
 app.use('/register', require('./routes/admin_register'));
 app.use('/forgot', require('./routes/admin_forgot'));
@@ -41,6 +43,18 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.post("/api/contact", function(req, res, next) {
+
+});
+
+app.post("/api/mappost", function(req, res, next) {
+
+});
+
+app.post("/api/alertpost", function(req, res, next) {
+
 });
 
 module.exports = app;
