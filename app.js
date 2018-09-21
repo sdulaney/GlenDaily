@@ -24,10 +24,14 @@ app.use('/users', usersRouter);
 
 app.use('/contact', require('./routes/contact'));
 
-app.use('/admin', require('./routes/admin'));
+var adminRoute = require('./routes/admin');
+
+app.use('/admin', adminRoute);
 app.use('/login', require('./routes/admin_login'));
 app.use('/register', require('./routes/admin_register'));
 app.use('/forgot', require('./routes/admin_forgot'));
+
+app.use('/mappost', require('./routes/mappost'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
