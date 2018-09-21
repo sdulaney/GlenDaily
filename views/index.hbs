@@ -11,4 +11,41 @@
 
 <p>Glendale prides itself on the quality of services it provides to the community. It is a full-service City, which includes a water and electrical department. The City operates its own power plant capable of serving the electrical needs of the entire city, although the majority of power is currently imported from other areas for cost savings. Water comes primarily from the Metropolitan Water District, along with a small portion from local wells. </p>
 
+<div id="map"></div>
+<script>
+   var map;
+   function initMap() {
+     map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 2,
+       center: new google.maps.LatLng(2.8,-187.3),
+       mapTypeId: 'terrain'
+     });
+   
+     // Create a <script> tag and set the USGS URL as the source.
+     var script = document.createElement('script');
+     // This example uses a local copy of the GeoJSON stored at
+     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+     script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+     document.getElementsByTagName('head')[0].appendChild(script);
+   }
+   
+   // Loop through the results array and place a marker for each
+   // set of coordinates.
+   window.eqfeed_callback = function(results) {
+     for (var i = 0; i < results.features.length; i++) {
+       var coords = results.features[i].geometry.coordinates;
+       var latLng = new google.maps.LatLng(coords[1],coords[0]);
+       var marker = new google.maps.Marker({
+         position: latLng,
+         map: map
+       });
+     }
+   }
+</script>
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYJ67tzTuj-qrAXv4PwMrmEvbaTYSQ9eI&callback=initMap">
+</script>
 
+<iframe width="600" height="450" frameborder="0" style="border:0" 
+   src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJqYPwyDLAwoARpibJ_p6hP-U&key=AIzaSyAYJ67tzTuj-qrAXv4PwMrmEvbaTYSQ9eI"
+   allowfullscreen></iframe>
