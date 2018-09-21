@@ -12,12 +12,12 @@ var data = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   router.use(express.static('public'));
-  res.render('admin_index', { title: 'Glendaily Admin', data: data });
+  res.render('admin_index', { title: 'Glendaily Admin', data: data, layout: false});
 });
 
 router.get('/contacts', function(req, res, next) {
   router.use(express.static('public'));
-  res.render('admin_contacts', { title: 'Glendaily Contacts', data: data});
+  res.render('admin_contacts', { title: 'Glendaily Contacts', data: data, layout: false});
 });
 
 module.exports = router;
