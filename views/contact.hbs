@@ -1,0 +1,83 @@
+<div>
+    <br><br>
+    <h2 class="page-header">Contact a City Official</h2>
+    <form method="POST" action="/contact">
+        <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" class="form-control" id="contact_name" name="name" placeholder="Name" />
+        </div>
+        <div class="form-group">
+            <label>Your Email</label>
+            <input type="email" class="form-control" id="contact_email" name="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+            <label>City Official</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="contact_sinanyan" id="contact_sinanyan" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    <img src="/images/sinanyan.jpeg" width="50">
+                    <br>
+                    Mayor Zareh Sinanyan
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="contact_agajanian" id="contact_agajanian" value="option2">
+                <label class="form-check-label" for="exampleRadios1">
+                    <img src="/images/agajanian.jpeg" width="50">
+                    <br>
+                    Councilmember Vrej Agajanian
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="contact_devine" id="contact_devine" value="option3">
+                <label class="form-check-label" for="exampleRadios1">
+                    <img src="/images/devine.jpeg" width="50">
+                    <br>
+                    Councilmember Paula Devine
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="contact_gharpetian" id="contact_gharpetian" value="option4">
+                <label class="form-check-label" for="exampleRadios1">
+                    <img src="/images/gharpetian.jpeg" width="50">
+                    <br>
+                    Councilmember Vartan Gharpetian
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="contact_najarian" id="contact_najarian" value="option5">
+                <label class="form-check-label" for="exampleRadios1">
+                    <img src="/images/najarian.jpeg" width="50">
+                    <br>
+                    Councilmember Ara Najarian
+                </label>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" id="contact_subject" name="subject" placeholder="Subject" />
+        </div>
+        <div class="form-group">
+            <label>Message</label>
+            <input type="text" class="form-control" id="contact_message" name="Message" placeholder="Message" />
+        </div>
+        <div class="form-group">
+            <label>Job ID</label>
+            <input type="text" class="form-control" id="addjob_job_id" name="job_id" placeholder="Job ID" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Add Job</button>
+        <input type="button" class="btn btn-primary" value="Clear" onClick="clearForm()" />
+    </form>
+</div>
+
+<script type="text/javascript">
+    function clearForm() {
+        document.getElementById("addjob_position").value = "";
+        document.getElementById("addjob_company").value = "";
+        document.getElementById("addjob_location").value = "";
+        document.getElementById("addjob_language").value = "";
+        document.getElementById("addjob_job_id").value = "";
+    }
+</script>
