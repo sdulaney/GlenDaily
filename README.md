@@ -38,8 +38,9 @@
 ## Built With
 - *Express.js*, *JavaScript*, *Bootstrap*, *Handlebars.js*, *Google Maps JavaScript API*
 
-## Try it out
+## Check it out
 - [https://glendaily.herokuapp.com/](https://glendaily.herokuapp.com/)
+- [https://devpost.com/software/glendaily](https://devpost.com/software/glendaily)
 
 ## Contributors
 - [sdulaney](https://github.com/sdulaney)
