@@ -1,79 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    {{!-- <link rel="stylesheet" href="/stylesheets/fonts.css" /> --}}
-  </head>
-  <body>
-    <div class="header">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">GlenDaily</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <a class="btn btn-outline-light" href="/contact" role="button" style="margin-right:10px;">Contact Us</a>
-            <a class="btn btn-outline-light" href="/alerts" role="button">Alerts</a>
-          </ul>
-          <ul class="navbar-nav navbar-right">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Citizens
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/post-job">Post Job</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Sign in</a>
-                <a class="dropdown-item" href="#">Sign out</a>
-                <a class="dropdown-item" href="#">Sign up</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                City Officials
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Your profile</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/login">Sign in</a>
-                <a class="dropdown-item" href="#">Sign out</a>
-                <a class="dropdown-item" href="/register">Sign up</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <main role="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            {{#if success_msg}}
-              <div class="alert alert-success">{{success_msg}}</div>
-            {{/if}}
-            {{#if error_msg}}
-              <div class="alert alert-danger">{{error_msg}}</div>
-            {{/if}}
-            {{#if error}}
-              <div class="alert alert-danger">{{error}}</div>
-            {{/if}}
-            {{{body}}}
-          </div>
-        </div>
-        <hr>
-      </div>
-    </main>
+<html>
 
-    <footer class="container">
-      <p>&copy; GlenDaily 2018</p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=8ebb42b4d843c2e7a12198cbdd37d775">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=1a701676c2faf6ca7de1a84c95af0f07">
+</head>
+
+<body>    
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="/">GlenDaily</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/faq/">FAQ</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/contact/">Contact Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/map/">Live Map</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="https://www.glendaleca.gov/residents/calendar">CALENDAR</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/login/">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+    {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+    {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    {{{body}}}
+
+    <footer class="page-footer dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5><a href="/">GlenDaily</a></h5>
+                    <ul>
+                        <li><a href="/login/">Login</a></li>
+                        <li><a href="/register/">Register</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About Us</h5>
+                    <ul>
+                        <li><a href="/faq/">FAQ</a></li>
+                        <li><a href="/contact/">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Features</h5>
+                    <ul>
+                        <li><a href="/map/">Live Map</a></li>
+                        <li><a href="https://www.glendaleca.gov/residents/calendar">Calendar</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Built with ❤ by Team #12 at<a href="https://www.glendaletechweek.com/calendar/2018/9/21/hackathon-iv-hosted-by-the-valley-economic-alliance"> Valley Hackation IV</a>.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2018 GlenDaily<br>Valley Hackation IV Team #12</p>
+        </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/script.min.js?h=91b2b9fd6a86fd92a6ad1efe2b2bd17f"></script>
+</body>
+
 </html>

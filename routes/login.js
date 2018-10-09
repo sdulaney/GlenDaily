@@ -4,7 +4,10 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   router.use(express.static('public'));
-  res.render('contact-us', { title: 'GlenDaily ~ Contact Us' });
+  if(req.session.isAuthenticated)
+	res.redirect("/admin/");
+  else
+  	res.render('login', { title: 'GlenDaily ~ Login' });
 });
 
 module.exports = router;

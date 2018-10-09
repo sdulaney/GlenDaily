@@ -1,0 +1,62 @@
+    <main class="page faq-page">
+        <section class="clean-block clean-faq dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Contact Form</h2>
+                    <p>Here, you can see all of the responses to the contact form.</p>
+                    <p id="header"></p>
+                    <p id="message"></p>
+                </div>
+                <div class="block-content">
+                    <table id="table" class="table table-striped table-bordered display" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                                <th>City Official</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each data}}
+                            <tr id="table_{{@index}}">
+                                <td>{{this.name}}</td>
+                                <td>{{this.subject}}</td>
+                                <td>{{this.email}}</td>
+                                <td><a href="javascript:void(0)" onclick=setMessage(decodeURIComponent("{{this.message}}"))>Read Message</a></td>
+                                <td>{{this.official}}</td>
+                                <td><script>document.write(new Date({{this.date}}).toString().split("GMT")[0].trim())</script></td>
+                                <td><a href="javascript:void(0)" onclick="removeResponse({{@index}})">Delete Response</a></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                                <th>City Official</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function setMessage(data) {
+            $("#header").html("<br/>Message:<br/><br/>");
+            $("#message").text(data);
+        }
+        function removeResponse(index) {
+            document.getElementById("table_" + index).style.display = "none";
+            $.post("/api/admin_removecontact", {index:index});
+            setTimeout(location.reload(), 500);
+        }
+    </script>
