@@ -3,6 +3,10 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Live Map</h2>
+                    <h4 class="text-info">Color Key</h4>
+                    <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" />Emergency&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" />Construction&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="http://maps.google.com/mapfiles/ms/icons/pink-dot.png" />Accident&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div id="map">
                 </div>
@@ -31,10 +35,18 @@
 		}
 		function addMarker(x, y, subject, desc, name, type) {
             var position = new google.maps.LatLng(x, y);
+
+            var image = "red-dot";
+            if(type == "Construction")
+            	image = "yellow-dot";
+            if(type == "Accident")
+            	image = "pink-dot";
+
 			var point = new google.maps.Marker({
 				position: position,
 				title: subject,
 				map: map,
+				icon: `http://maps.google.com/mapfiles/ms/icons/${image}.png`
         	});
             var hash = position.lat()+"|"+position.lng();
             mapTable[hash] = {
