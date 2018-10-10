@@ -1,0 +1,26 @@
+    <main class="page login-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Log In</h2>
+                    <p></p>
+                </div>
+                <form action="/api/login" method="POST">
+                    <div class="form-group"><label for="email">Email</label><input class="form-control item" name="email" type="text" id="email"></div>
+                    <div class="form-group"><label for="password">Password</label><input class="form-control" name="pass" type="password" id="password"></div>
+                    <input class="btn btn-primary btn-block" type="submit" />
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script>
+    if(new URL(location.href).searchParams.get("failure")) {
+        if(new URL(location.href).searchParams.get("failure") == "1")
+            swal("No user found!", "There was no user found with that email!", "error");
+        else if(new URL(location.href).searchParams.get("failure") == "2")
+            swal("Incorrect password!", "Sorry, but you have entered the wrong password for that user!", "error");
+
+        window.history.pushState({}, document.title, "/login/");
+    }
+    </script>

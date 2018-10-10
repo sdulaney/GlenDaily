@@ -1,0 +1,48 @@
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Post a Map Report</h2>
+                    <p>What's going on? Do you have something to report? Please fill out the form below and it will be added to the Live Map!<br></p>
+                </div>
+                <form method="POST" action="/api/mappost">
+                    <div class="form-group">
+                        <div>
+                            <fieldset>
+                                <legend>Type</legend>
+                                <div class="custom-control custom-radio"><input type="radio" value="Emergency" name="type" checked="" id="customRadio1" class="custom-control-input"><label class="custom-control-label" for="customRadio1">Emergency</label></div>
+                                <div class="custom-control custom-radio"><input type="radio" value="Construction" name="type" id="customRadio2" class="custom-control-input"><label class="custom-control-label" for="customRadio2">Construction</label></div>
+                                <div class="custom-control custom-radio"><input type="radio" value="Accident" name="type" id="customRadio3" class="custom-control-input"><label class="custom-control-label" for="customRadio3">Accident</label></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Name</label><input class="form-control" type="text" name="name"></div>
+                    <div class="form-group"><label>Subject</label><input class="form-control" type="text" name="subject"></div>
+                    <div class="form-group"><label>Description</label><textarea class="form-control" name="desc"></textarea></div>
+                    <div class="form-group"><label>Location</label><input class="form-control" type="text" name="coords" id="coords"></div>
+                    <div class="form-group"><input class="btn btn-primary btn-block" type="submit" style="margin-top: 20px;" id="submit" /></div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+    <script>
+    window.addEventListener("message", console.log, false);
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById("coords").value = position.coords.latitude + ", " + position.coords.longitude;
+            document.getElementById("submit").disabled = false;
+        });
+    } else {
+      swal("Cannot find location!", "Cannot find your current location, please enter the coordinates into the form separated by a comma.", "warning");
+    }
+    if(new URL(location.href).searchParams.get("success")) {
+    	if(new URL(location.href).searchParams.get("success") == "1")
+    		swal("Map report uploaded!", "Your map report has been successfully added to the Live Map!", "success");
+    	else
+    		swal("There was an error!", "Sorry, but your map report was not able to be added to the Live Map.", "error");
+
+    	window.history.pushState({}, document.title, "/map_report/");
+    }
+
+    </script>

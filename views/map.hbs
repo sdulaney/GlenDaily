@@ -1,0 +1,80 @@
+    <main class="page map-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Live Map</h2>
+                    <h4 class="text-info">Color Key</h4>
+                    <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" />Emergency&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" />Construction&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="http://maps.google.com/mapfiles/ms/icons/pink-dot.png" />Accident&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div id="map">
+                </div>
+                <br>
+                <div id="marker_info">
+                	<h4 id="subject"></h3>
+                	<h5 id="desc"></h4>
+                	<h6 id="name"></h5>
+                	<h6 id="coords"></h6>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    	var map;
+        var mapTable = {};
+    	function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 34.1425, lng: -118.2551},
+				zoom: 13
+			});
+
+			{{#each data}}
+			addMarker({{this.x}}, {{this.y}}, decodeURIComponent("{{this.subject}}"), decodeURIComponent("{{this.desc}}"), decodeURIComponent("{{this.name}}"), decodeURIComponent("{{this.type}}"));
+            {{/each}}
+		}
+		function addMarker(x, y, subject, desc, name, type) {
+            var position = new google.maps.LatLng(x, y);
+
+            var image = "red-dot";
+            if(type == "Construction")
+            	image = "yellow-dot";
+            if(type == "Accident")
+            	image = "pink-dot";
+
+			var point = new google.maps.Marker({
+				position: position,
+				title: subject,
+				map: map,
+				icon: `http://maps.google.com/mapfiles/ms/icons/${image}.png`
+        	});
+            var hash = position.lat()+"|"+position.lng();
+            mapTable[hash] = {
+                title: subject,
+                type: type,
+                desc: desc,
+                name: name,
+                x: x,
+                y: y
+            }
+        	google.maps.event.addListener(point, 'click', function(pointer) {
+                var pointerHash = pointer.latLng.lat()+"|"+pointer.latLng.lng();
+                var marker = mapTable[pointerHash];
+        		document.getElementById("subject").innerText = marker.title + " (" + marker.type + ")";
+        		document.getElementById("desc").innerText = marker.desc;
+        		document.getElementById("name").innerText = "Posted by: " + marker.name;
+        		document.getElementById("coords").innerText = "coords: " + x + ", " + y;
+        	});
+		}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aj8VB9WhlQkTKOSd4_Mw8O44GlQFOo4&callback=initMap" async defer></script>
+    <style>
+      #map {
+        height: 800px;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>

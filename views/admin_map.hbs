@@ -1,0 +1,70 @@
+    <main class="page faq-page">
+        <section class="clean-block clean-faq dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Live Map Posts</h2>
+                    <p>Here, you can see all of the posts to the Live Map.</p>
+                    <p id="header"></p>
+                    <p id="message"></p>
+                </div>
+                <div class="block-content">
+                    <table id="table" class="table table-striped table-bordered display" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Coordinates</th>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <script>
+        function setMessage(data) {
+            $("#header").html("<br/>Description:<br/><br/>");
+            $("#message").text(data);
+        }
+        function removeResponse(index) {
+            document.getElementById("table_" + index).style.display = "none";
+            $.post("/api/admin_removemap", {index:index});
+            setTimeout(location.reload(), 500);
+        }
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+                        <tbody>
+                            {{#each data}}
+                            <tr id="table_{{@index}}">
+                                <td>{{this.x}}, {{this.y}}</td>
+                                <td><script>document.write(escapeHtml(decodeURIComponent("{{this.type}}")))</script></td>
+                                <td><script>document.write(escapeHtml(decodeURIComponent("{{this.name}}")))</script></td>
+                                <td><script>document.write(escapeHtml(decodeURIComponent("{{this.subject}}")))</script></td>
+                                <td><a href="javascript:void(0)" onclick=setMessage(decodeURIComponent("{{this.desc}}"))>Read Description</a></td>
+                                <td><script>document.write(new Date({{this.date}}).toString().split("GMT")[0].trim())</script></td>
+                                <td><a href="javascript:void(0)" onclick="removeResponse({{@index}})">Delete Response</a></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Coordinates</th>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
