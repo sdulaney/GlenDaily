@@ -1,6 +1,6 @@
 # GlenDaily
 
-![GlenDaily Screenshots](https://www.stewartdulaney.com/wp-content/uploads/sites/7/2018/09/glendaily-screenshots.gif "GlenDaily")
+![GlenDaily Screenshots](https://www.stewartdulaney.com/wp-content/uploads/sites/7/2018/11/glendaily2.0-screenshots.gif "GlenDaily")
 
 ## Inspiration
 - We wanted to build a more useful platform for communication between Glendale city officials and the Glendale community than just an informational website.
